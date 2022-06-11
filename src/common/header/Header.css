@@ -16,4 +16,28 @@
         transform: rotateY(360deg);
     }
 }
-
+.modalB{
+    border: none;
+    height: 60px;
+    width: 140px;
+    margin: 0 20px;
+    margin-bottom: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+.leftM{
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.rightM{
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.container{
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 4px;
+    /* height: 300px; */
+}

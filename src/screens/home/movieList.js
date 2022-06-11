@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
   },
   imageList: {
     flexWrap: "nowrap",
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: "translateZ(0)",
   },
 
@@ -34,22 +33,21 @@ export default function SingleLineImageList(props) {
     <div className={classes.root}>
       <ImageList className={classes.imageList} rowHeight={250} cols={6}>
         {props.moviesData.map((item) => (
-          
+
           <ImageListItem key={item.poster_url}>
-          <Link to="/details" state={{ movie: item }}>
-            <img className="image" src={item.poster_url} alt={item.title} />
+            <Link to="/details" state={{ movie: item }}>
+              <img className="image" src={item.poster_url} alt={item.title} />
             </Link>
             <ImageListItemBar
               title={item.title}
               classes={
                 {
-                  // root: classes.titleBar,
-                  // title: classes.title,
+
                 }
               }
             />
           </ImageListItem>
-          
+
         ))}
       </ImageList>
     </div>

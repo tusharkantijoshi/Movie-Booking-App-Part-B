@@ -18,10 +18,10 @@ function Home() {
     artists: artists,
     userSelection: moviesData,
   });
-    
+
   const [movieState, setMovieState] = useState(moviesData);
 
-  var filterHandler = ()=> {
+  var filterHandler = () => {
     if (
       userSelection.name === "" &&
       userSelection.releaseDateEnd === "" &&
@@ -32,14 +32,14 @@ function Home() {
       const state = moviesData;
       setMovieState(state);
       return moviesData;
-    } 
-    
+    }
+
     else {
       const filteredMovies = movieState.filter((movie) => {
         if (
-          movie.title.toLowerCase() === userSelection.name.toLowerCase()||
-          movie.genres.some((genre) => userSelection.genres.includes(genre)) ||parseInt(new Date(movie.release_date).getTime()) <=  parseInt(new Date(userSelection.releaseDateEnd).getTime())||
-          parseInt(new Date(movie.release_date).getTime()) >=  parseInt(new Date(userSelection.releaseDateStart).getTime()) || movie.artists.some((artist) =>
+          movie.title.toLowerCase() === userSelection.name.toLowerCase() ||
+          movie.genres.some((genre) => userSelection.genres.includes(genre)) || parseInt(new Date(movie.release_date).getTime()) <= parseInt(new Date(userSelection.releaseDateEnd).getTime()) ||
+          parseInt(new Date(movie.release_date).getTime()) >= parseInt(new Date(userSelection.releaseDateStart).getTime()) || movie.artists.some((artist) =>
             userSelection.artists.includes(
               `${artist.first_name} ${artist.last_name}`
             )
@@ -51,7 +51,7 @@ function Home() {
           return null;
       });
 
-      
+
       const filteredState = filteredMovies;
       setMovieState(filteredState);
       console.log(filteredState)
@@ -59,27 +59,27 @@ function Home() {
   };
 
 
-    return (
-      <div>
-        <Header btnType="loginbtn" variant="contained" buttonName="LOGIN" btnType2="hiddenbtn" buttonName2="hidden" btnType3="logoutbtn" buttonName3="LOGOUT"/>
-        <span className="heading">Upcoming Movies</span>
-        <SingleLineImageList moviesData={homeState.data} />
+  return (
+    <div>
+      {/* <Header  btnType="hiddenbtn"/> */}
+      <span className="heading">Upcoming Movies</span>
+      <SingleLineImageList moviesData={homeState.data} />
 
-        <div className="flex-container">
-          <div className="left">
-            <TitlebarImageList moviesData={movieState} />
-          </div>
-          <div className="right">
-            <SimpleCard
-              genres={homeState.genres}
-              artists={homeState.artists}
-              filterHandler={filterHandler}
-            />
-          </div>
+      <div className="flex-container">
+        <div className="left">
+          <TitlebarImageList moviesData={movieState} />
+        </div>
+        <div className="right">
+          <SimpleCard
+            genres={homeState.genres}
+            artists={homeState.artists}
+            filterHandler={filterHandler}
+          />
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
 
 export default Home;
