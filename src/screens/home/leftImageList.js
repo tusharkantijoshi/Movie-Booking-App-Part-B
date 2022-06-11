@@ -37,20 +37,20 @@ export default function TitlebarImageList(props) {
     <div className={classes.root}>
       <div className={classes.container}>
         <ImageList rowHeight={350} cols={4} className={classes.imageList}>
-
+          
           {props.moviesData.map((item) => (
 
-
+            
             <ImageListItem key={item.title} className="leftListItem">
-
-              <Link to="/details" state={{ movie: item }}>
+            
+                <Link to="/details" state={{ movie: item }}>
                 <img className="image" src={item.poster_url} alt={item.title} />
-              </Link>
-              <ImageListItemBar
-                title={item.title}
-                subtitle={<span>Release Date: {new Date(item.release_date).toDateString()}</span>}
-              />
-
+                </Link>        
+                <ImageListItemBar
+                  title={item.title}                  
+                  subtitle={<span>Release Date: {new Date(item.release_date).toDateString()}</span>}
+                />
+              
             </ImageListItem>
 
           ))}
